@@ -1,0 +1,12 @@
+[submodule "external_roles/geerlingguy.docker"]
+	path = external_roles/geerlingguy.docker
+	url = git@github.com:geerlingguy/ansible-role-docker.git
+[submodule "ansible_eth2"]
+	path = ansible_eth2
+	url = git@github.com:protolambda/ansible_eth2.git
+[submodule "external_roles/cloudalchemy.node-exporter"]
+	path = external_roles/cloudalchemy.node-exporter
+	url = git@github.com:cloudalchemy/ansible-node-exporter.git
+[submodule "external_roles/geerlingguy.swap"]
+	path = external_roles/geerlingguy.swap
+	url = git@github.com:geerlingguy/ansible-role-swap.git
