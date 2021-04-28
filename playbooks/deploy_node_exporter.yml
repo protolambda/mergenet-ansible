@@ -1,0 +1,6 @@
+- name: Start node exporter
+  hosts: all
+  gather_facts: true
+  serial: 20
+  roles:
+    - cloudalchemy.node-exporter

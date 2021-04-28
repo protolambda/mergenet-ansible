@@ -1,0 +1,45 @@
+eth2client_name: teku
+beacon_image_name: mkalinin/teku:rayonism
+
+beacon_memory: 7600M
+beacon_kernel_memory: 7700M
+
+beacon_volumes:
+  - "{{node_dir}}/beacon:/beacondata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
+
+beacon_start_args: >
+  --network "/networkdata/eth2_config.yaml"
+  --data-path "/beacondata"
+  --p2p-enabled=true
+  --logging=trace
+  --initial-state "/networkdata/genesis.ssz"
+  --eth1-endpoint "{{eth1endpoint}}"
+  --p2p-discovery-bootnodes "{{bootnode_enr}}"
+  --metrics-enabled=true --metrics-interface=0.0.0.0 --metrics-port="{{beacon_metrics_port}}"
+  --p2p-discovery-enabled=true
+  --p2p-peer-lower-bound=1
+  --p2p-port="{{beacon_p2p_port}}"
+  --rest-api-enabled=true
+  --rest-api-docs-enabled=true
+  --rest-api-interface=0.0.0.0
+  --rest-api-port="{{beacon_api_port}}"
+  --Xdata-storage-non-canonical-blocks-enabled=true
+
+beacon_env:
+  JAVA_OPTS: "-Xmx6000m -Xms6000m"
+  LOG4J_CONFIGURATION_FILE: "{{beacon_container_dir}}/log_config.xml"
+
+
+validator_volumes:
+  - "validator:/validatordata"
+  - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
+
+validator_start_args: >
+  validator-client
+  --network "/networkdata/eth2_config.yaml"
+  --data-path "/validatordata"
+  --beacon-node-api-endpoint "{{beacon_endpoint}}"
+  --validators-graffiti="teku"
+  --validator-keys "/validatordata/keys:/validatordata/secrets"

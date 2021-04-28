@@ -1,0 +1,10 @@
+eth2client_name: nimbus
+beacon_image_name: protolambda/nimbus:rayonism
+validator_image_name: protolambda/nimbus:rayonism
+
+beacon_memory: 6600M
+beacon_kernel_memory: 6700M
+
+
+beacon_start_args: >
+  todo

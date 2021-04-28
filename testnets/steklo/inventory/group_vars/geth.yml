@@ -1,0 +1,23 @@
+eth1_client_name: catalyst
+eth1_image_name: ethereum/client-go:latest
+eth1_rpc_port: 8545
+
+eth1_volumes:
+  - "{{node_dir}}/geth:/gethdata"
+  - "networkdata/eth1_config.json:/networkdata/eth1_config.json"
+
+geth_init_args: >
+  --catalyst
+  --datadir "/gethdata/chaindata"
+  init "/networkdata/eth1_config.json"
+
+eth1_start_args: >
+  --catalyst
+  --http --http.api net,eth,consensus
+  --http.port {{eth1_rpc_port}}
+  --http.addr 0.0.0.0
+  --nodiscover
+  --miner.etherbase 0x1000000000000000000000000000000000000000
+  --datadir "/gethdata/chaindata"
+
+eth1_user_id: "1000:1000"

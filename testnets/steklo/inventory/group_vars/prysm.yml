@@ -1,0 +1,6 @@
+eth2client_name: prysm
+beacon_image_name: gcr.io/prysmaticlabs/prysm/beacon-chain:rayonism
+validator_image_name: gcr.io/prysmaticlabs/prysm/validator:rayonism
+
+beacon_start_args: >
+  todo

@@ -1,0 +1,9 @@
+- name: Stop eth1 node
+  hosts: eth1
+  gather_facts: true
+  serial: 20
+  tasks:
+    - name: Stop eth1 node container
+      shell: "docker stop --time=10 {{eth1_container_name}}"
+      register: stop_result
+      failed_when: "(stop_result.rc >= 1) and not ('No such container' in stop_result.stderr)"
