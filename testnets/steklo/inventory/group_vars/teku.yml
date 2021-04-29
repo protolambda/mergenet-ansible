@@ -5,7 +5,7 @@ beacon_memory: 7600M
 beacon_kernel_memory: 7700M
 
 beacon_volumes:
-  - "{{node_dir}}/beacon:/beacondata"
+  - "{{node_dir}}:/beacondata"
   - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
   - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
@@ -13,6 +13,7 @@ beacon_start_args: >
   --network "/networkdata/eth2_config.yaml"
   --data-path "/beacondata"
   --p2p-enabled=true
+  --p2p-advertised-ip={{public_ip_address}}
   --logging=trace
   --initial-state "/networkdata/genesis.ssz"
   --eth1-endpoint "{{eth1endpoint}}"
@@ -33,7 +34,7 @@ beacon_env:
 
 
 validator_volumes:
-  - "validator:/validatordata"
+  - "{{node_dir}}/validator:/validatordata"
   - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
 
 validator_start_args: >
@@ -41,5 +42,5 @@ validator_start_args: >
   --network "/networkdata/eth2_config.yaml"
   --data-path "/validatordata"
   --beacon-node-api-endpoint "{{beacon_endpoint}}"
-  --validators-graffiti="teku"
+  --validators-graffiti="{{graffiti}}"
   --validator-keys "/validatordata/keys:/validatordata/secrets"

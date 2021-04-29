@@ -11,6 +11,8 @@ all:
     beacon_metrics_port: 8000
     beacon_p2p_port: 9000
     beacon_endpoint: http://127.0.0.1:4000
+    graffiti: "protolambda"  # TODO per node
+    # TODO: beacon_endpoint should be GRPC for prysm
   hosts:
     bootnode0:
       ansible_host: 3.67.41.12

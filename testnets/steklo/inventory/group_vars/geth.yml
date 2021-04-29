@@ -3,8 +3,8 @@ eth1_image_name: ethereum/client-go:latest
 eth1_rpc_port: 8545
 
 eth1_volumes:
-  - "{{node_dir}}/geth:/gethdata"
-  - "networkdata/eth1_config.json:/networkdata/eth1_config.json"
+  - "{{node_dir}}:/gethdata"
+  - "{{testnet_dir}}/eth1_config.json:/networkdata/eth1_config.json"
 
 geth_init_args: >
   --catalyst

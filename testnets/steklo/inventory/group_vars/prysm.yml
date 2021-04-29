@@ -1,6 +1,43 @@
 eth2client_name: prysm
-beacon_image_name: gcr.io/prysmaticlabs/prysm/beacon-chain:rayonism
-validator_image_name: gcr.io/prysmaticlabs/prysm/validator:rayonism
+beacon_image_name: gcr.io/prysmaticlabs/prysm/beacon-chain:merge-mainnet
+validator_image_name: gcr.io/prysmaticlabs/prysm/validator:merge-mainnet
+
+beacon_memory: 6600M
+beacon_kernel_memory: 6700M
+
+beacon_volumes:
+  - "{{node_dir}}:/beacondata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
 beacon_start_args: >
-  todo
+  --datadir="/beacondata"
+  --min-sync-peers=0
+  --http-web3provider="{{eth1endpoint}}"
+  --bootstrap-node="{{bootnode_enr}}"
+  --chain-config-file="/networkdata/eth2_config.yaml"
+  --genesis-state="/networkdata/genesis.ssz"
+  --p2p-host-ip={{public_ip_address}}
+  --p2p-max-peers=30
+  --p2p-udp-port=9002 --p2p-tcp-port=9002
+  --monitoring-host=0.0.0.0 --monitoring-port=8002
+  --rpc-host=0.0.0.0 --rpc-port=4102
+  --grpc-gateway-host=0.0.0.0
+  --grpc-gateway-port=4002
+  --verbosity="debug"
+  --enable-debug-rpc-endpoints
+  --min-sync-peers 1
+
+validator_volumes:
+  - "{{node_dir}}/validator:/validatordata"
+  - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
+
+validator_start_args: >
+  --accept-terms-of-use=true
+  --datadir="/validatordata"
+  --chain-config-file="/networkdata/eth2_config.yaml"
+  --beacon-rpc-provider={{beacon_endpoint}}
+  --graffiti="{{graffiti}}"
+  --wallet-dir=/validatordata/wallet
+  --wallet-password-file="/validatordata/wallet_pass.txt"
+

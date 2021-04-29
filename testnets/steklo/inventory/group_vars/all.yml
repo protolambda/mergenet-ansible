@@ -7,6 +7,8 @@ common_log_options:
 common_log_driver: json-file
 
 home_dir: "/home/{{ ansible_user }}"
+node_dir: "{{home_dir}}/node"
+testnet_dir: "{{home_dir}}/networkdata"
 
 beacon_container_name: beacon
 validator_container_name: validator

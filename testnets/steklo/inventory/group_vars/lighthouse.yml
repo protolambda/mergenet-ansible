@@ -6,7 +6,7 @@ beacon_memory: 6600M
 beacon_kernel_memory: 6700M
 
 beacon_volumes:
-  - "{{node_dir}}/beacon:/beacondata"
+  - "{{node_dir}}:/beacondata"
   - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
   - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
@@ -18,6 +18,9 @@ beacon_start_args: >
   --testnet-yaml-config "/networkdata/eth2_config.yaml"
   --debug-level=trace
   beacon_node
+  --enr-address={{public_ip_address}}
+  --enr-tcp-port={{beacon_p2p_port}} --enr-udp-port={{beacon_p2p_port}}
+  --port={{beacon_p2p_port}} --discovery-port={{beacon_p2p_port}}
   --eth1-endpoints "{{eth1endpoint}}"
   --boot-nodes "{{bootnode_enr}}"
   --http
@@ -27,10 +30,9 @@ beacon_start_args: >
   --metrics-address 0.0.0.0
   --metrics-port "{{beacon_metrics_port}}"
   --listen-address 0.0.0.0
-  --port "{{beacon_p2p_port}}"
 
 validator_volumes:
-  - "validator:/validatordata"
+  - "{{node_dir}}/validator:/validatordata"
   - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
   - "networkdata/genesis.ssz:/networkdata/genesis.ssz"
 
@@ -42,6 +44,6 @@ validator_start_args: >
   validator_client
   --init-slashing-protection
   --beacon-nodes "{{beacon_endpoint}}"
-  --graffiti="lighthouse"
+  --graffiti="{{graffiti}}"
   --validators-dir "/validatordata/keys"
   --secrets-dir "/validatordata/secrets"

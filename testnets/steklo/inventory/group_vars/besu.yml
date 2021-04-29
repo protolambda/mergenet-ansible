@@ -1,0 +1,19 @@
+eth1_client_name: besu
+eth1_image_name: suburbandad/besu:rayonism
+eth1_rpc_port: 8545
+
+eth1_volumes:
+  - "{{node_dir}}:/besudata"
+  - "{{testnet_dir}}/eth1_config.json:/networkdata/eth1_config.json"
+
+eth1_start_args: >
+  --data-path="/besudata"
+  --genesis-file="/networkdata/eth1_config.json"
+  --rpc-http-enabled --rpc-http-api=ETH,NET,CONSENSUS
+  --rpc-http-host=0.0.0.0
+  --rpc-http-port={{eth1_rpc_port}}
+  --Xmerge-support=true
+  --discovery-enabled=false
+  --miner-coinbase="0x1000000000000000000000000000000000000000"
+
+eth1_user_id: "1000:1000"
