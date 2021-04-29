@@ -23,7 +23,7 @@ bootnode_start_args: >
   --enr-udp="{{bootnode_port}}"
   --fork-version="{{bootnode_fork_version}}"
   --genesis-validators-root="{{bootnode_genesis_validators_root}}"
-  --level=debug
+  --level=trace
   --listen-ip=0.0.0.0
   --listen-udp="{{bootnode_port}}"
   --api-addr="0.0.0.0:8000"
