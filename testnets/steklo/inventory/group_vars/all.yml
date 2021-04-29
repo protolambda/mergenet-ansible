@@ -6,6 +6,8 @@ common_log_options:
 
 common_log_driver: json-file
 
+home_dir: "/home/{{ ansible_user }}"
+
 beacon_container_name: beacon
 validator_container_name: validator
 eth1_container_name: eth1

@@ -13,23 +13,20 @@ all:
     beacon_endpoint: http://127.0.0.1:4000
   hosts:
     bootnode0:
-      vars:  # TODO
-        ansible_host: 1.2.3.4
-        public_ip_address: 1.2.3.4
-        bootnode_p2p_priv_key: "{{lookup('env', 'STEKLO_BOOTNODE0_PRIV')}}"
-    teku0:
-      vars:
-        ansible_host: 1.2.3.4
-        public_ip_address: 1.2.3.4
-    teku1:
-      vars:
-        ansible_host: 1.2.3.4
-        public_ip_address: 1.2.3.4
+      ansible_host: 3.67.41.12
+      public_ip_address: 3.67.41.12
+      bootnode_p2p_priv_key: "{{lookup('env', 'STEKLO_BOOTNODE0_PRIV')}}"
+#    teku0:
+#      ansible_host: 1.2.3.4
+#      public_ip_address: 1.2.3.4
+#    teku1:
+#      ansible_host: 1.2.3.4
+#      public_ip_address: 1.2.3.4
   children:
     bootnode:
       hosts:
         bootnode0:
-    teku:
-      hosts:
-        teku0:
-        teku1:
+#    teku:
+#      hosts:
+#        teku0:
+#        teku1:

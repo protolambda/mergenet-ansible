@@ -1,5 +1,5 @@
 bootnode_container_name: bootnode
-bootnode_memory: 1000m
+bootnode_memory: 2000m
 bootnode_image_name: protolambda/eth2-bootnode:latest
 
 bootnode_host_dir: "{{home_dir}}/bootnode_data"
@@ -11,8 +11,8 @@ bootnode_ip: "{{public_ip_address}}"
 # 32 bytes, hex encoded, no 0x.
 #bootnode_p2p_priv_key: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
 
-bootnode_fork_version: "0x00000000"
-bootnode_genesis_validators_root: "0x0000000000000000000000000000000000000000000000000000000000000000"
+bootnode_fork_version: "0x00000701"
+bootnode_genesis_validators_root: "0xcca74cd576b4f7e395f0cb6c61a3bb57c1d0c1a1f08e7ce2652966736b14535c"
 
 bootnode_start_args: >
   {% if (other_bootnodes is defined) and other_bootnodes %}

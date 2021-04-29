@@ -1,5 +1,5 @@
 - name: Setup machine for deployment
-  hosts: beacon
+  hosts: all
   gather_facts: true
   serial: 20
   tasks:
@@ -14,7 +14,7 @@
       block:
         - name: Swap file creation
           vars:
-            swap_file_size_mb: "4000m"
+            swap_file_size_mb: "2048"
           include_role:
             name: geerlingguy.swap
     - name: Ubuntu universe repo and update
