@@ -1,0 +1,12 @@
+forkmon_container_name: forkmon
+bootnode_memory: 3000m
+forkmon_image: ralexstokes/eth2-fork-mon
+
+forkmon_virtual_port: 8080
+
+forkmon_host_dir: "{{home_dir}}/forkmon_data"
+
+forkmon_volumes:
+  - "{{forkmon_host_dir}}:/data"
+
+forkmon_start_args: "--config=/data/config.yaml"

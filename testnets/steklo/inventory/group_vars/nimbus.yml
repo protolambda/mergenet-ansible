@@ -28,8 +28,6 @@ beacon_start_args: >
   --rpc --rpc-port={{nimbus_rpc_port}} --rpc-address=0.0.0.0
   --rest --rest-port={{beacon_api_port}} --rpc-address=0.0.0.0
   --metrics --metrics-port={{beacon_metrics_port}} --metrics-address=0.0.0.0
-  --validators-dir="/beacondata/no_bn_keys"
-  --secrets-dir="/beacondata/no_bn_secrets"
   --log-level="{{ beacon_log_level | upper }}"
   --log-file="/dev/null"
 

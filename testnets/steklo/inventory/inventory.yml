@@ -14,7 +14,10 @@ all:
     beacon_grpc_port: 4001
     beacon_metrics_port: 8000
     beacon_p2p_port: 9000
+    letsencrypt_email: proto@protolambda.com
     graffiti: "proto {{eth2_client_name}} {{eth1_client_name}}"
+    local_forkmondata_host_dir: "{{inventory_dir}}/../forkmondata"
+    local_forkmondata_host_archive: "{{inventory_dir}}/../forkmondata.tar.gz"
     local_networkdata_host_dir: "{{inventory_dir}}/../networkdata"
     local_networkdata_host_archive: "{{inventory_dir}}/../networkdata.tar.gz"
     # private dirs
@@ -37,6 +40,9 @@ all:
       ansible_host: 3.67.41.12
       public_ip_address: 3.67.41.12
       bootnode_p2p_priv_key: "{{lookup('env', 'STEKLO_BOOTNODE0_PRIV')}}"
+    forkmon0:
+      ansible_host: 3.18.108.10
+      public_ip_address: 3.18.108.10
     steklo_101:
       valname: val101
       ansible_host: 13.58.214.185
@@ -92,6 +98,9 @@ all:
     bootnode:
       hosts:
         bootnode0:
+    forkmon:
+      hosts:
+        forkmon0:
     metrics:
       hosts:
         steklo_901:
