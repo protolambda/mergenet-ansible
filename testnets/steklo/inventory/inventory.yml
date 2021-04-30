@@ -12,11 +12,11 @@ all:
     beacon_metrics_port: 8000
     beacon_p2p_port: 9000
     graffiti: "proto {{eth2_client_name}} {{eth1_client_name}}"
-    local_networkdata_host_dir: "testnets/steklo/networkdata"
-    local_networkdata_host_archive: "testnets/steklo/networkdata.tar.gz"
+    local_networkdata_host_dir: "{{inventory_dir}}/../networkdata"
+    local_networkdata_host_archive: "{{inventory_dir}}/../networkdata.tar.gz"
     # private dirs
-    local_validator_host_dir: "testnets/steklo/keystore_prep/validators/{{valname}}"
-    local_validator_host_archive: "testnets/steklo/keystore_prep/validators/{{valname}}.tar.gz"
+    local_validator_host_dir: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}"
+    local_validator_host_archive: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}.tar.gz"
   hosts:
     bootnode0:
       ansible_host: 3.67.41.12

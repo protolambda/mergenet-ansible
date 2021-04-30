@@ -1,2 +1,4 @@
 secret.sh
 keystore_prep
+*.tar.gz
+networkdata
