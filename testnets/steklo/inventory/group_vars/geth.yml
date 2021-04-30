@@ -1,6 +1,8 @@
 eth1_client_name: catalyst
 eth1_image_name: ethereum/client-go:latest
-eth1_rpc_port: 8545
+
+eth1_memory: 5000M
+eth1_kernel_memory: 5500M
 
 eth1_volumes:
   - "{{eth1_node_dir}}:/gethdata"

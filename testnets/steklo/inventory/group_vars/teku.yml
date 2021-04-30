@@ -1,8 +1,8 @@
 eth2client_name: teku
 beacon_image_name: mkalinin/teku:rayonism
 
-beacon_memory: 7600M
-beacon_kernel_memory: 7700M
+beacon_memory: 7000M
+beacon_kernel_memory: 7500M
 
 beacon_volumes:
   - "{{beacon_node_dir}}:/beacondata"
@@ -34,6 +34,9 @@ beacon_env:
 
 
 beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
+
+validator_memory: 2000M
+validator_kernel_memory: 2500M
 
 validator_volumes:
   - "{{validator_node_dir}}/validator:/validatordata"

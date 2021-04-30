@@ -2,13 +2,27 @@ eth2client_name: nimbus
 beacon_image_name: protolambda/nimbus:rayonism
 validator_image_name: protolambda/nimbus:rayonism
 
-beacon_memory: 6600M
-beacon_kernel_memory: 6700M
+beacon_memory: 5000M
+beacon_kernel_memory: 5500M
 
 
 beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
 
+beacon_volumes:
+  - todo
+
 beacon_start_args: >
+  todo
+
+
+validator_memory: 2000M
+validator_kernel_memory: 2500M
+
+
+validator_volumes:
+  - todo
+
+validator_start_args: >
   todo
 
 # TODO: might have to mod this to 0600 later. Archive-upload with 0600 fails, need to mod after unarchiving

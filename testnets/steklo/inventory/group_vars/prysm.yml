@@ -2,8 +2,8 @@ eth2client_name: prysm
 beacon_image_name: gcr.io/prysmaticlabs/prysm/beacon-chain:merge-mainnet
 validator_image_name: gcr.io/prysmaticlabs/prysm/validator:merge-mainnet
 
-beacon_memory: 6600M
-beacon_kernel_memory: 6700M
+beacon_memory: 5000M
+beacon_kernel_memory: 5500M
 
 beacon_volumes:
   - "{{beacon_node_dir}}:/beacondata"
@@ -31,6 +31,9 @@ beacon_start_args: >
 
 # GRPC, not REST JSON
 beacon_endpoint: "127.0.0.1:{{beacon_grpc_port}}"
+
+validator_memory: 2000M
+validator_kernel_memory: 2500M
 
 validator_volumes:
   - "{{validator_node_dir}}/validator:/validatordata"
