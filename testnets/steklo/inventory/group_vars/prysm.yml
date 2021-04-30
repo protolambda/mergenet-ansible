@@ -11,6 +11,7 @@ beacon_volumes:
   - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
 beacon_start_args: >
+  --accept-terms-of-use=true
   --datadir="/beacondata"
   --min-sync-peers=0
   --http-web3provider="{{eth1endpoint}}"
