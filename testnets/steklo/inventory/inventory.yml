@@ -24,16 +24,28 @@ all:
     local_validator_host_dir: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}"
     local_validator_host_archive: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}.tar.gz"
     bootnode_enrs:
-        # proto bootnode0 (discv5, no full beacon node)
-      - "enr:-Ku4QFrzIH_DETC3gh3Dhl_rMzNOdlUH427ef3lbtArKVvbaX_YVs6_zEB0Z5Q72a6ZKlgvXJjS-yt20UXhftrFS2EoCh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhANDKQyJc2VjcDI1NmsxoQIOfbH-pbhkBiSvD0wJxyjm8vA4DROacA7uT4Nfdc5QDYN1ZHCCIyg"
-        # Sigma Prime (Lighthouse): ap-southeast
-      - "enr:-LK4QJO02L_YsaXjI0OUw_mIcfInBLiy9pqE2j6S8gyvVG31f2pemsBQWKSzh1o6FYKqkDYOOKCMRymcwvGqxHRXm0oBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhA3UIxiJc2VjcDI1NmsxoQK-Ul9MNUZLNn5uITHeEwg8z4h26vshUJmux6yQm0d9ooN0Y3CCIyiDdWRwgiMo"
-        # Sigma Prime (Lighthouse): eu-central
-      - "enr:-LK4QIVjWVem2LJoSZkqFLx0QM0xVJLD18jHZSNwUsMcqO0yaL_2bFznCLknH8hz9K2hPmPUUnfFsWPJfUwpgzOGNooBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhANComqJc2VjcDI1NmsxoQOEccHNC733KCWsZFgRl7PctIYwbiHFrV-OIOtwvSFx14N0Y3CCIyiDdWRwgiMo"
-        # Sigma Prime (Lighthouse): ap-south
-      - "enr:-LK4QF0gc-Zj5y4k6typswN5ZYaYp1OIuNxgb0lhl7idG78OIsrmCOR5STJQT9RMp0tysjTElmp0hwaKmxizo_KyKOABh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhAMHJfSJc2VjcDI1NmsxoQPwt51JI8k5b2cc1tcotu3BrjY2MOSOycIyBnpf5_LHX4N0Y3CCIyiDdWRwgiMo"
-        # Sigma Prime (Lighthouse): us-west
-      - "enr:-LK4QGDdr6pFuRO95rX4HoMWbrhTqr_o26e2QgQVZBgoGQDAc207JcOqaf2lXxufVqCgSZ9Sevm0sywquBFTp94o3GkBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhCNQDTuJc2VjcDI1NmsxoQI4ptVL1_Buv7If42yf1hfPJdvtsa36k4otY0OoYGBTYYN0Y3CCIyiDdWRwgiMo"
+        # proto teku 101
+      - "enr:-LK4QBgGc0S7XEM4KAGEsQFbz-WV2mlk5w_EXkc65Rkei1ioNsRfwtOd3p8ntf-4S-2k97gzUUGKb0r-DXUEmq2PwdsLh2F0dG5ldHOI__________-EZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhA061rmJc2VjcDI1NmsxoQIhC4I9ec5t1U-eSuuexX39z7_KhLKdjd2E-ZAClx_gvYN0Y3CCIyiDdWRwgiMo"
+        # proto teku 102
+      - "enr:-LK4QNwzqoGJeYXbfZaDAf1d-K5IiatX2J0N-DYiWfuvgPh0IshBEhrZQ4kTK7G_Yj-ZyTo710qVyeRVTiE5Mi52v6YHh2F0dG5ldHOI__________-EZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhBLezGGJc2VjcDI1NmsxoQJN3m0438yoQs8THMxRcpNIKMpHxstMbpihyifNUQcMEoN0Y3CCIyiDdWRwgiMo"
+        # proto teku 103
+      - "enr:-KG4QA8rj5InSwFJO485l7RAT-w3J-3CJdE0A_Gf8VqwGOeuQYAL7DmNQzR4-Ncawee4LeThDlv08yniZBP8bdlMRTIOhGV0aDKQefgOXQAABwH__________4JpZIJ2NIJpcIQSvE3UiXNlY3AyNTZrMaECZsn1RRspwAR3l0oMq4DuCWHSd0_hq0gZtJ3vStHpNWKDdGNwgiMog3VkcIIjKA"
+        # proto lighthouse 107
+      - "enr:-LK4QFUdo-_lh1zuViYj64I5c6IeHzJIHyw_kG6p3kXVtfhTGdCJ7ST1yquL20rKoX5Z7wwEXywNFsujH_cvDNKZlKRBh2F0dG5ldHOI__________-EZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhAOH3m-Jc2VjcDI1NmsxoQOxcmkdqx_CJ5pPKSjqsdEcqZhvXarEFQ0WTXXMjgAraoN0Y3CCIyiDdWRwgiMo"
+        # proto lighhtouse 108
+      - "enr:-LK4QGpFUf8YuMQwIgqoi1lm9XkUEEnT48NSWkl2NwsPK92TS-cFAuxOx2MiZxwBK4lYeDs8cUw7MOuvYXdOT8rXYKVBh2F0dG5ldHOI__________-EZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhA069AqJc2VjcDI1NmsxoQIRLf3YkomFgAzC6ZJnRnKlG_FMfn4Hc1WFkJwRr5aRYYN0Y3CCIyiDdWRwgiMo"
+        # proto lighthouse 109
+      - "enr:-LK4QPWyJYq5drT123QfSmupkZg86Mr3kKYjYrgYRzwclzJiV7snlW7FblRcWhFD6zcnXDkx7HKI87VI-LMi_GnKGbNBh2F0dG5ldHOI__________-EZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhAOPbquJc2VjcDI1NmsxoQLJkDjTk_36Y-2claw8FymF__wDwUwju2vdyhhglavxsYN0Y3CCIyiDdWRwgiMo"
+      #   # proto bootnode0 (discv5, no full beacon node)
+      # - "enr:-Ku4QFrzIH_DETC3gh3Dhl_rMzNOdlUH427ef3lbtArKVvbaX_YVs6_zEB0Z5Q72a6ZKlgvXJjS-yt20UXhftrFS2EoCh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhANDKQyJc2VjcDI1NmsxoQIOfbH-pbhkBiSvD0wJxyjm8vA4DROacA7uT4Nfdc5QDYN1ZHCCIyg"
+      #   # Sigma Prime (Lighthouse): ap-southeast
+      # - "enr:-LK4QJO02L_YsaXjI0OUw_mIcfInBLiy9pqE2j6S8gyvVG31f2pemsBQWKSzh1o6FYKqkDYOOKCMRymcwvGqxHRXm0oBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhA3UIxiJc2VjcDI1NmsxoQK-Ul9MNUZLNn5uITHeEwg8z4h26vshUJmux6yQm0d9ooN0Y3CCIyiDdWRwgiMo"
+      #   # Sigma Prime (Lighthouse): eu-central
+      # - "enr:-LK4QIVjWVem2LJoSZkqFLx0QM0xVJLD18jHZSNwUsMcqO0yaL_2bFznCLknH8hz9K2hPmPUUnfFsWPJfUwpgzOGNooBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhANComqJc2VjcDI1NmsxoQOEccHNC733KCWsZFgRl7PctIYwbiHFrV-OIOtwvSFx14N0Y3CCIyiDdWRwgiMo"
+      #   # Sigma Prime (Lighthouse): ap-south
+      # - "enr:-LK4QF0gc-Zj5y4k6typswN5ZYaYp1OIuNxgb0lhl7idG78OIsrmCOR5STJQT9RMp0tysjTElmp0hwaKmxizo_KyKOABh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhAMHJfSJc2VjcDI1NmsxoQPwt51JI8k5b2cc1tcotu3BrjY2MOSOycIyBnpf5_LHX4N0Y3CCIyiDdWRwgiMo"
+      #   # Sigma Prime (Lighthouse): us-west
+      # - "enr:-LK4QGDdr6pFuRO95rX4HoMWbrhTqr_o26e2QgQVZBgoGQDAc207JcOqaf2lXxufVqCgSZ9Sevm0sywquBFTp94o3GkBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhCNQDTuJc2VjcDI1NmsxoQI4ptVL1_Buv7If42yf1hfPJdvtsa36k4otY0OoYGBTYYN0Y3CCIyiDdWRwgiMo"
 
   hosts:
     bootnode0:
