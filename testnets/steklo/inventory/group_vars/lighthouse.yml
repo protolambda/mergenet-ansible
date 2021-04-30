@@ -1,4 +1,4 @@
-eth2client_name: lighthouse
+eth2_client_name: lighthouse
 beacon_image_name: sigp/lighthouse:rayonism
 validator_image_name: sigp/lighthouse:rayonism
 
@@ -37,9 +37,9 @@ validator_memory: 2000M
 validator_kernel_memory: 2500M
 
 validator_volumes:
-  - "{{validator_node_dir}}/validator:/validatordata"
-  - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
-  - "networkdata/genesis.ssz:/networkdata/genesis.ssz"
+  - "{{validator_node_dir}}:/validatordata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
 validator_start_args: >
   lighthouse

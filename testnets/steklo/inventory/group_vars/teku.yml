@@ -1,5 +1,6 @@
-eth2client_name: teku
+eth2_client_name: teku
 beacon_image_name: mkalinin/teku:rayonism
+validator_image_name: mkalinin/teku:rayonism
 
 beacon_memory: 7000M
 beacon_kernel_memory: 7500M
@@ -41,8 +42,8 @@ validator_memory: 2000M
 validator_kernel_memory: 2500M
 
 validator_volumes:
-  - "{{validator_node_dir}}/validator:/validatordata"
-  - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{validator_node_dir}}:/validatordata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
 
 validator_start_args: >
   validator-client

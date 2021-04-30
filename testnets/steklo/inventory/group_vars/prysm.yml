@@ -1,4 +1,4 @@
-eth2client_name: prysm
+eth2_client_name: prysm
 beacon_image_name: gcr.io/prysmaticlabs/prysm/beacon-chain:merge-mainnet
 validator_image_name: gcr.io/prysmaticlabs/prysm/validator:merge-mainnet
 
@@ -37,8 +37,8 @@ validator_memory: 2000M
 validator_kernel_memory: 2500M
 
 validator_volumes:
-  - "{{validator_node_dir}}/validator:/validatordata"
-  - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{validator_node_dir}}:/validatordata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
 
 validator_start_args: >
   --accept-terms-of-use=true
@@ -47,7 +47,7 @@ validator_start_args: >
   --beacon-rpc-provider={{beacon_endpoint}}
   --graffiti="{{graffiti}}"
   --wallet-dir=/validatordata/wallet
-  --wallet-password-file="/validatordata/wallet_pass.txt"
+  --wallet-password-file="/validatordata/pass.txt"
 
 keystores_file_mode: "0700"
 

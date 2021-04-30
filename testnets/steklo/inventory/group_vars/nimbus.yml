@@ -1,4 +1,4 @@
-eth2client_name: nimbus
+eth2_client_name: nimbus
 beacon_image_name: protolambda/nimbus:rayonism
 validator_image_name: protolambda/nimbus:rayonism
 

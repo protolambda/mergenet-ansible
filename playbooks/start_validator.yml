@@ -1,4 +1,4 @@
-- name: Start beacon node
+- name: Start validator client
   hosts: validator
   gather_facts: true
   serial: 20
