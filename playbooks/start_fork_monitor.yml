@@ -1,5 +1,5 @@
 - name: Start forkmon
-  hosts: bootnode
+  hosts: forkmon
   gather_facts: true
   serial: 20
   tasks:
@@ -41,7 +41,7 @@
         image: "{{ forkmon_image_name }}"
         pull: true
         restart_policy: unless-stopped
-        network_mode: bridged
+        network_mode: bridge
         restart: "{{ forkmon_require_restart | default(false) }}"
         memory: "{{forkmon_memory}}"
         command: "{{ forkmon_start_args }}"

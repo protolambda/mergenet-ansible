@@ -15,6 +15,7 @@ all:
     beacon_metrics_port: 8000
     beacon_p2p_port: 9000
     letsencrypt_email: proto@protolambda.com
+    forkmon_domain: steklo.rayonism.io
     graffiti: "proto {{eth2_client_name}} {{eth1_client_name}}"
     local_forkmondata_host_dir: "{{inventory_dir}}/../forkmondata"
     local_forkmondata_host_archive: "{{inventory_dir}}/../forkmondata.tar.gz"
