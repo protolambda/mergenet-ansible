@@ -5,7 +5,7 @@ beacon_memory: 7600M
 beacon_kernel_memory: 7700M
 
 beacon_volumes:
-  - "{{node_dir}}:/beacondata"
+  - "{{beacon_node_dir}}:/beacondata"
   - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
   - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
@@ -36,7 +36,7 @@ beacon_env:
 beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
 
 validator_volumes:
-  - "{{node_dir}}/validator:/validatordata"
+  - "{{validator_node_dir}}/validator:/validatordata"
   - "networkdata/eth2_config.yaml:/networkdata/eth2_config.yaml"
 
 validator_start_args: >

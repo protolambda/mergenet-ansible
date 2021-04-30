@@ -60,6 +60,9 @@ all:
     bootnode:
       hosts:
         bootnode0:
+    metrics:
+      hosts:
+        steklo_901:
     beacon:
       hosts:
         steklo_101:
