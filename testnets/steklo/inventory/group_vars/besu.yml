@@ -4,6 +4,9 @@ eth1_image_name: suburbandad/besu:rayonism
 eth1_memory: 5000M
 eth1_kernel_memory: 5500M
 
+# websocket with /ws suffix
+eth1endpoint_ws: ws://127.0.0.1:8546/ws
+
 eth1_volumes:
   - "{{eth1_node_dir}}:/besudata"
   - "{{testnet_dir}}/eth1_config.json:/networkdata/eth1_config.json"

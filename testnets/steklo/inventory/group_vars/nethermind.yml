@@ -4,6 +4,9 @@ eth1_image_name: nethermind/nethermind:latest
 eth1_memory: 5000M
 eth1_kernel_memory: 5500M
 
+# websocket with upgrade
+eth1endpoint_ws: http://127.0.0.1:8546
+
 eth1_volumes:
   - "{{eth1_node_dir}}:/netherminddata"
   - "{{testnet_dir}}/eth1_nethermind_config.json:/networkdata/eth1_nethermind_config.json"

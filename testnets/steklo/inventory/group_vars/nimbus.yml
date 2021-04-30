@@ -7,16 +7,16 @@ beacon_kernel_memory: 5500M
 
 beacon_volumes:
   - "{{beacon_node_dir}}:/beacondata"
-  - "{{testnet_dir}}/nimbus_config.json:/networkdata/nimbus_config.json"
-  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
 beacon_start_args: >
   beacon_node
-  --network="/networkdata/nimbus_config.json"
+  --network=steklo
   --max-peers="60"
   --data-dir="/beacondata"
   --web3-url="{{eth1endpoint_ws}}"
-  --bootstrap-node="{{ bootnode_enrs | join(',') }}"
+  {% for bootnode_enr in bootnode_enrs %}
+  --bootstrap-node="{{ bootnode_enr }}"
+  {% endfor %}
   --udp-port={{beacon_p2p_port}}
   --tcp-port={{beacon_p2p_port}}
   --listen-address=0.0.0.0

@@ -6,7 +6,6 @@ all:
       - ralexstokes
     ansible_user: "ubuntu"
     eth1endpoint: http://127.0.0.1:8545
-    eth1endpoint_ws: ws://127.0.0.1:8546/ws
     eth1_rpc_port: 8545
     eth1_ws_rpc_port: 8546
     nimbus_rpc_port: 4009

@@ -27,6 +27,8 @@ beacon_start_args: >
   --rest-api-docs-enabled=true
   --rest-api-interface=0.0.0.0
   --rest-api-port="{{beacon_api_port}}"
+  --metrics-host-allowlist="*"
+  --rest-api-host-allowlist="*"
   --Xdata-storage-non-canonical-blocks-enabled=true
 
 beacon_env:
