@@ -8,27 +8,136 @@ all:
     eth1endpoint: http://127.0.0.1:8500
     eth1_rpc_port: 8500
     beacon_api_port: 4000
+    beacon_grpc_port: 4001
     beacon_metrics_port: 8000
     beacon_p2p_port: 9000
-    beacon_endpoint: http://127.0.0.1:4000
-    graffiti: "protolambda"  # TODO per node
-    # TODO: beacon_endpoint should be GRPC for prysm
+    graffiti: "proto {{eth2_client_name}} {{eth1_client_name}}"
   hosts:
     bootnode0:
       ansible_host: 3.67.41.12
       public_ip_address: 3.67.41.12
       bootnode_p2p_priv_key: "{{lookup('env', 'STEKLO_BOOTNODE0_PRIV')}}"
-#    teku0:
-#      ansible_host: 1.2.3.4
-#      public_ip_address: 1.2.3.4
-#    teku1:
-#      ansible_host: 1.2.3.4
-#      public_ip_address: 1.2.3.4
+    steklo_101:
+      ansible_host: 13.58.214.185
+      public_ip_address: 13.58.214.185
+    steklo_102:
+      ansible_host: 18.222.204.97
+      public_ip_address: 18.222.204.97
+    steklo_103:
+      ansible_host: 18.188.77.212
+      public_ip_address: 18.188.77.212
+    steklo_104:
+      ansible_host: 18.116.48.218
+      public_ip_address: 18.116.48.218
+    steklo_105:
+      ansible_host: 3.143.222.213
+      public_ip_address: 3.143.222.213
+    steklo_106:
+      ansible_host: 3.142.153.99
+      public_ip_address: 3.142.153.99
+    steklo_107:
+      ansible_host: 3.135.222.111
+      public_ip_address: 3.135.222.111
+    steklo_108:
+      ansible_host: 13.58.244.10
+      public_ip_address: 13.58.244.10
+    steklo_109:
+      ansible_host: 3.143.110.171
+      public_ip_address: 3.143.110.171
+    steklo_110:
+      ansible_host: 13.59.125.194
+      public_ip_address: 13.59.125.194
+    steklo_111:
+      ansible_host: 3.142.146.214
+      public_ip_address: 3.142.146.214
+    steklo_112:
+      ansible_host: 3.17.158.14
+      public_ip_address: 3.17.158.14
+    steklo_901:
+      ansible_host: 3.142.40.70
+      public_ip_address: 3.142.40.70
   children:
     bootnode:
       hosts:
         bootnode0:
-#    teku:
-#      hosts:
-#        teku0:
-#        teku1:
+    beacon:
+      hosts:
+        steklo_101:
+        steklo_102:
+        steklo_103:
+        steklo_104:
+        steklo_105:
+        steklo_106:
+        steklo_107:
+        steklo_108:
+        steklo_109:
+        steklo_110:
+        steklo_111:
+        steklo_112:
+    validator:
+      hosts:
+        steklo_101:
+        steklo_102:
+        steklo_103:
+        steklo_104:
+        steklo_105:
+        steklo_106:
+        steklo_107:
+        steklo_108:
+        steklo_109:
+        steklo_110:
+        steklo_111:
+        steklo_112:
+    eth1:
+      hosts:
+        steklo_101:
+        steklo_102:
+        steklo_103:
+        steklo_104:
+        steklo_105:
+        steklo_106:
+        steklo_107:
+        steklo_108:
+        steklo_109:
+        steklo_110:
+        steklo_111:
+        steklo_112:
+    teku:
+      hosts:
+        steklo_101:
+        steklo_102:
+        steklo_103:
+    prysm:
+      hosts:
+        steklo_104:
+        steklo_105:
+        steklo_106:
+    lighthouse:
+      hosts:
+        steklo_107:
+        steklo_108:
+        steklo_109:
+    nimbus:
+      hosts:
+        steklo_110:
+        steklo_111:
+        steklo_112:
+    geth:
+      hosts:
+        steklo_101:
+        steklo_104:
+        steklo_107:
+        steklo_110:
+    besu:
+      hosts:
+        steklo_102:
+        steklo_105:
+        steklo_108:
+        steklo_111:
+    nethermind:
+      hosts:
+        steklo_103:
+        steklo_106:
+        steklo_109:
+        steklo_112:
+

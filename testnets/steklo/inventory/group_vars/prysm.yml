@@ -17,16 +17,20 @@ beacon_start_args: >
   --bootstrap-node="{{bootnode_enr}}"
   --chain-config-file="/networkdata/eth2_config.yaml"
   --genesis-state="/networkdata/genesis.ssz"
+  --verbosity={{beacon_log_level}}
   --p2p-host-ip={{public_ip_address}}
   --p2p-max-peers=30
-  --p2p-udp-port=9002 --p2p-tcp-port=9002
-  --monitoring-host=0.0.0.0 --monitoring-port=8002
-  --rpc-host=0.0.0.0 --rpc-port=4102
+  --p2p-udp-port={{beacon_p2p_port}} --p2p-tcp-port={{beacon_p2p_port}}
+  --monitoring-host=0.0.0.0 --monitoring-port={{beacon_metrics_port}}
+  --rpc-host=0.0.0.0 --rpc-port={{beacon_grpc_port}}
   --grpc-gateway-host=0.0.0.0
-  --grpc-gateway-port=4002
+  --grpc-gateway-port={{beacon_api_port}}
   --verbosity="debug"
   --enable-debug-rpc-endpoints
   --min-sync-peers 1
+
+# GRPC, not REST JSON
+beacon_endpoint: "127.0.0.1:{{beacon_grpc_port}}"
 
 validator_volumes:
   - "{{node_dir}}/validator:/validatordata"

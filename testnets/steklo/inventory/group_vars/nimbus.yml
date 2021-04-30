@@ -6,5 +6,7 @@ beacon_memory: 6600M
 beacon_kernel_memory: 6700M
 
 
+beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
+
 beacon_start_args: >
   todo

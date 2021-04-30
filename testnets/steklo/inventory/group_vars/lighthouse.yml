@@ -16,7 +16,7 @@ beacon_start_args: >
   --testnet-deposit-contract-deploy-block 0
   --testnet-genesis-state "/networkdata/genesis.ssz"
   --testnet-yaml-config "/networkdata/eth2_config.yaml"
-  --debug-level=trace
+  --debug-level={{beacon_log_level}}
   beacon_node
   --enr-address={{public_ip_address}}
   --enr-tcp-port={{beacon_p2p_port}} --enr-udp-port={{beacon_p2p_port}}
@@ -30,6 +30,8 @@ beacon_start_args: >
   --metrics-address 0.0.0.0
   --metrics-port "{{beacon_metrics_port}}"
   --listen-address 0.0.0.0
+
+beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
 
 validator_volumes:
   - "{{node_dir}}/validator:/validatordata"
