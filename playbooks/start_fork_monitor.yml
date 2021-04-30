@@ -42,12 +42,14 @@
         pull: true
         restart_policy: unless-stopped
         network_mode: bridge
+        ports: # Cannot run on host network due to nginx proxy
+          - "5000:8080"
         restart: "{{ forkmon_require_restart | default(false) }}"
         memory: "{{forkmon_memory}}"
         command: "{{ forkmon_start_args }}"
         volumes: "{{forkmon_volumes}}"
         env:
           VIRTUAL_HOST: "{{ forkmon_domain }}"
-          VIRTUAL_PORT: "'{{ forkmon_virtual_port }}'"
+          VIRTUAL_PORT: "'5000'"
           LETSENCRYPT_HOST: "{{ forkmon_domain }}"
           LETSENCRYPT_EMAIL: "{{ letsencrypt_email }}"
