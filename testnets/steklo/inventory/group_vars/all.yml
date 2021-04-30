@@ -19,11 +19,6 @@ eth1_container_name: eth1
 # TODO: override bootnode_enr
 bootnode_enr: ""
 
-
-validator_user_id: "1000:1000"
-beacon_user_id: "1000:1000"
-
-
 node_exporter_web_listen_address: "0.0.0.0:8100"
 beacon_metrics_port: 8000
 beacon_p2p_port: 9000

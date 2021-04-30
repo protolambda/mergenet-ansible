@@ -12,45 +12,62 @@ all:
     beacon_metrics_port: 8000
     beacon_p2p_port: 9000
     graffiti: "proto {{eth2_client_name}} {{eth1_client_name}}"
+    local_networkdata_host_dir: "testnets/steklo/networkdata"
+    local_networkdata_host_archive: "testnets/steklo/networkdata.tar.gz"
+    # private dirs
+    local_validator_host_dir: "testnets/steklo/keystore_prep/validators/{{valname}}"
+    local_validator_host_archive: "testnets/steklo/keystore_prep/validators/{{valname}}.tar.gz"
   hosts:
     bootnode0:
       ansible_host: 3.67.41.12
       public_ip_address: 3.67.41.12
       bootnode_p2p_priv_key: "{{lookup('env', 'STEKLO_BOOTNODE0_PRIV')}}"
     steklo_101:
+      valname: val101
       ansible_host: 13.58.214.185
       public_ip_address: 13.58.214.185
     steklo_102:
+      valname: val102
       ansible_host: 18.222.204.97
       public_ip_address: 18.222.204.97
     steklo_103:
+      valname: val103
       ansible_host: 18.188.77.212
       public_ip_address: 18.188.77.212
     steklo_104:
+      valname: val104
       ansible_host: 18.116.48.218
       public_ip_address: 18.116.48.218
     steklo_105:
+      valname: val105
       ansible_host: 3.143.222.213
       public_ip_address: 3.143.222.213
     steklo_106:
+      valname: val106
       ansible_host: 3.142.153.99
       public_ip_address: 3.142.153.99
     steklo_107:
+      valname: val107
       ansible_host: 3.135.222.111
       public_ip_address: 3.135.222.111
     steklo_108:
+      valname: val108
       ansible_host: 13.58.244.10
       public_ip_address: 13.58.244.10
     steklo_109:
+      valname: val109
       ansible_host: 3.143.110.171
       public_ip_address: 3.143.110.171
     steklo_110:
+      valname: val110
       ansible_host: 13.59.125.194
       public_ip_address: 13.59.125.194
     steklo_111:
+      valname: val111
       ansible_host: 3.142.146.214
       public_ip_address: 3.142.146.214
     steklo_112:
+      valname: val112
       ansible_host: 3.17.158.14
       public_ip_address: 3.17.158.14
     steklo_901:

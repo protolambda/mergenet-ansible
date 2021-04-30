@@ -49,3 +49,8 @@ validator_start_args: >
   --graffiti="{{graffiti}}"
   --validators-dir "/validatordata/keys"
   --secrets-dir "/validatordata/secrets"
+
+keystores_file_mode: "0700"
+
+beacon_user_id: "1000:1000"
+validator_user_id: "1000:1000"

@@ -1,1 +1,15 @@
-# TODO: upload genesis.ssz and configs
+- name: Upload network data
+  hosts: beacon
+  gather_facts: true
+  serial: 20
+  tasks:
+  - name: Archive networkdata dir to prepare for upload
+    archive:
+      path: "{{local_networkdata_host_dir}}/*"
+      dest: "{{local_networkdata_host_archive}}"
+    delegate_to: localhost
+  - name: Upload new validator accounts to BN
+    unarchive:
+      src: "{{ local_networkdata_host_archive }}"
+      dest: "{{ testnet_dir }}/"
+

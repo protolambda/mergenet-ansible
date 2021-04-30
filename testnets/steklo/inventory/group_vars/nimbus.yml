@@ -10,3 +10,8 @@ beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
 
 beacon_start_args: >
   todo
+
+keystores_file_mode: "0600"
+
+beacon_user_id: "1000:1000"
+validator_user_id: "1000:1000"

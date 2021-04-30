@@ -45,3 +45,7 @@ validator_start_args: >
   --wallet-dir=/validatordata/wallet
   --wallet-password-file="/validatordata/wallet_pass.txt"
 
+keystores_file_mode: "0700"
+
+beacon_user_id: "1000:1000"
+validator_user_id: "1000:1000"

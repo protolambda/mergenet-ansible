@@ -46,3 +46,8 @@ validator_start_args: >
   --beacon-node-api-endpoint "{{beacon_endpoint}}"
   --validators-graffiti="{{graffiti}}"
   --validator-keys "/validatordata/keys:/validatordata/secrets"
+
+keystores_file_mode: "0704"
+
+beacon_user_id: "1000:1000"
+validator_user_id: "1000:1000"
