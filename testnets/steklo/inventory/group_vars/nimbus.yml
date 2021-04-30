@@ -5,14 +5,31 @@ validator_image_name: protolambda/nimbus:rayonism
 beacon_memory: 5000M
 beacon_kernel_memory: 5500M
 
-
-beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
-
 beacon_volumes:
-  - todo
+  - "{{beacon_node_dir}}:/beacondata"
+  - "{{testnet_dir}}/nimbus_config.json:/networkdata/nimbus_config.json"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
 
 beacon_start_args: >
-  todo
+  beacon_node
+  --network="/networkdata/nimbus_config.json"
+  --max-peers="60"
+  --data-dir="/beacondata"
+  --web3-url="{{eth1endpoint_ws}}"
+  --bootstrap-node="{{ bootnode_enrs | join(',') }}"
+  --udp-port={{beacon_p2p_port}}
+  --tcp-port={{beacon_p2p_port}}
+  --listen-address=0.0.0.0
+  --graffiti="{{graffiti}}"
+  --nat="extip:{{public_ip_address}}"
+  --enr-auto-update=false
+  --log-level="{{beacon_log_level}}"
+  --log-file="/dev/null"
+  --rpc --rpc-port={{nimbus_rpc_port}} --rpc-address=0.0.0.0
+  --rest --rest-port={{beacon_api_port}} --rpc-address=0.0.0.0
+  --metrics --metrics-port={{beacon_metrics_port}} --metrics-address=0.0.0.0
+  --validators-dir="/beacondata/no_bn_keys"
+  --secrets-dir="/beacondata/no_bn_secrets"
   --log-level="{{ beacon_log_level | upper }}"
   --log-file="/dev/null"
 
@@ -22,10 +39,20 @@ validator_kernel_memory: 2500M
 
 
 validator_volumes:
-  - todo
+  - "{{validator_node_dir}}:/validatordata"
+  # Note: nimbus validators fetch the spec config from the beacon node
 
 validator_start_args: >
-  todo
+  validator_client
+  --log-level="debug"
+  --log-file="/dev/null"
+  --data-dir="/validatordata"
+  --non-interactive=true
+  --graffiti="{{graffiti}}"
+  --rpc-port={{nimbus_rpc_port}}
+  --rpc-address=127.0.0.1
+  --validators-dir="/validatordata/keys"
+  --secrets-dir="/validatordata/secrets"
 
 # TODO: might have to mod this to 0600 later. Archive-upload with 0600 fails, need to mod after unarchiving
 keystores_file_mode: "0700"

@@ -18,6 +18,9 @@ eth1_start_args: >
   --http --http.api net,eth,consensus
   --http.port {{eth1_rpc_port}}
   --http.addr 0.0.0.0
+  --ws --ws.api net,eth,consensus
+  --ws.port={{eth1_ws_rpc_port}}
+  --ws.addr 0.0.0.0
   --nodiscover
   --miner.etherbase 0x1000000000000000000000000000000000000000
   --datadir "/gethdata/chaindata"
