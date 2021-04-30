@@ -4,18 +4,30 @@ weak_subjectivity_provider_endpoint: ""
 etherscan_api_key: ""
 http_timeout_milliseconds: 2000
 endpoints:
-  - http://13.58.214.185:4000
-  - http://18.222.204.97:4000
-  - http://18.188.77.212:4000
-  - http://18.116.48.218:4000
-  - http://3.143.222.213:4000
-  - http://3.142.153.99:4000
-  - http://3.135.222.111:4000
-  - http://13.58.244.10:4000
-  - http://3.143.110.171:4000
-  - http://13.59.125.194:4009
-  - http://3.142.146.214:4009
-  - http://3.17.158.14:4009
+  - addr: http://13.58.214.185:4000
+    eth1: Geth
+  - addr: http://18.222.204.97:4000
+    eth1: Besu
+  - addr: http://18.188.77.212:4000
+    eth1: Nethermind
+  - addr: http://18.116.48.218:4000
+    eth1: Geth
+  - addr: http://3.143.222.213:4000
+    eth1: Besu
+  - addr: http://3.142.153.99:4000
+    eth1: Nethermind
+  - addr: http://3.135.222.111:4000
+    eth1: Geth
+  - addr: http://13.58.244.10:4000
+    eth1: Besu
+  - addr: http://3.143.110.171:4000
+    eth1: Nethermind
+  - addr: http://13.59.125.194:4009
+    eth1: Geth
+  - addr: http://3.142.146.214:4009
+    eth1: Besu
+  - addr: http://3.17.158.14:4009
+    eth1: Nethermind
 outputDir: /public
 eth2:
   seconds_per_slot: 12
