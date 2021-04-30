@@ -13,6 +13,8 @@ beacon_volumes:
 
 beacon_start_args: >
   todo
+  --log-level="{{ beacon_log_level | upper }}"
+  --log-file="/dev/null"
 
 
 validator_memory: 2000M

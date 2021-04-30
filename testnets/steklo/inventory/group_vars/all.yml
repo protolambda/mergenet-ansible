@@ -16,6 +16,8 @@ beacon_container_name: beacon
 validator_container_name: validator
 eth1_container_name: eth1
 
+beacon_log_level: debug
+
 # TODO: override bootnode_enr
 bootnode_enr: ""
 

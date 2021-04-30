@@ -17,7 +17,7 @@ beacon_start_args: >
   --logging={{beacon_log_level}}
   --initial-state "/networkdata/genesis.ssz"
   --eth1-endpoint "{{eth1endpoint}}"
-  --p2p-discovery-bootnodes "{{bootnode_enr}}"
+  --p2p-discovery-bootnodes "{{ bootnode_enrs | join(',') }}"
   --metrics-enabled=true --metrics-interface=0.0.0.0 --metrics-port="{{beacon_metrics_port}}"
   --p2p-discovery-enabled=true
   --p2p-peer-lower-bound=1
@@ -30,7 +30,9 @@ beacon_start_args: >
 
 beacon_env:
   JAVA_OPTS: "-Xmx6000m -Xms6000m"
-  LOG4J_CONFIGURATION_FILE: "{{beacon_container_dir}}/log_config.xml"
+
+# TODO: maybe configure logging style via env var later
+#  LOG4J_CONFIGURATION_FILE: "/beacondata/log_config.xml"
 
 
 beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"

@@ -14,7 +14,7 @@ beacon_start_args: >
   --datadir="/beacondata"
   --min-sync-peers=0
   --http-web3provider="{{eth1endpoint}}"
-  --bootstrap-node="{{bootnode_enr}}"
+  --bootstrap-node="{{ bootnode_enrs | join(',') }}"
   --chain-config-file="/networkdata/eth2_config.yaml"
   --genesis-state="/networkdata/genesis.ssz"
   --verbosity={{beacon_log_level}}

@@ -22,7 +22,7 @@ beacon_start_args: >
   --enr-tcp-port={{beacon_p2p_port}} --enr-udp-port={{beacon_p2p_port}}
   --port={{beacon_p2p_port}} --discovery-port={{beacon_p2p_port}}
   --eth1-endpoints "{{eth1endpoint}}"
-  --boot-nodes "{{bootnode_enr}}"
+  --boot-nodes "{{ bootnode_enrs | join(',') }}"
   --http
   --http-address 0.0.0.0
   --http-port "{{beacon_api_port}}"
