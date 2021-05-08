@@ -23,8 +23,6 @@ beacon_start_args: >
   --graffiti="{{graffiti}}"
   --nat="extip:{{public_ip_address}}"
   --enr-auto-update=false
-  --log-level="{{beacon_log_level}}"
-  --log-file="/dev/null"
   --rpc --rpc-port={{nimbus_rpc_port}} --rpc-address=0.0.0.0
   --rest --rest-port={{beacon_api_port}} --rpc-address=0.0.0.0
   --metrics --metrics-port={{beacon_metrics_port}} --metrics-address=0.0.0.0
