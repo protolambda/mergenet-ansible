@@ -1,5 +1,5 @@
 eth1_client_name: besu
-eth1_image_name: suburbandad/besu:rayonism
+eth1_image_name: protolambda/besu:rayonism
 
 eth1_memory: 5000M
 eth1_kernel_memory: 5500M

@@ -1,6 +1,6 @@
 eth2_client_name: prysm
-beacon_image_name: gcr.io/prysmaticlabs/prysm/beacon-chain:merge-mainnet
-validator_image_name: gcr.io/prysmaticlabs/prysm/validator:merge-mainnet
+beacon_image_name: protolambda/prysm-beacon:rayonism
+validator_image_name: protolambda/prysm-validator:rayonism
 
 beacon_memory: 5000M
 beacon_kernel_memory: 5500M
