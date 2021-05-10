@@ -1,0 +1,189 @@
+all:
+  vars:
+    github_user_pubkeys:
+      - protolambda
+      - djrtwo
+      - ralexstokes
+    ansible_user: "ubuntu"
+    eth1endpoint: http://127.0.0.1:8545
+    eth1_rpc_port: 8545
+    eth1_ws_rpc_port: 8546
+    nimbus_rpc_port: 4009
+    beacon_api_port: 4000
+    beacon_grpc_port: 4001
+    beacon_metrics_port: 8000
+    beacon_p2p_port: 9000
+    letsencrypt_email: proto@protolambda.com
+    forkmon_domain: fork.nocturne.rayonism.io
+    explorer_domain: nocturne.rayonism.io
+    graffiti: "proto {{eth2_client_name}} {{eth1_client_name}}"
+    local_explorerdata_host_dir: "{{inventory_dir}}/../explorerdata"
+    local_explorerdata_host_archive: "{{inventory_dir}}/../explorerdata.tar.gz"
+    local_forkmondata_host_dir: "{{inventory_dir}}/../forkmondata"
+    local_forkmondata_host_archive: "{{inventory_dir}}/../forkmondata.tar.gz"
+    local_networkdata_host_dir: "{{inventory_dir}}/../networkdata"
+    local_networkdata_host_archive: "{{inventory_dir}}/../networkdata.tar.gz"
+    # private dirs
+    local_validator_host_dir: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}"
+    local_validator_host_archive: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}.tar.gz"
+    bootnode_enrs:
+        # proto teku 101
+      - "enr:-foobar" # TODO
+  hosts:
+    noct_101:
+      valname: val101
+      ansible_host: 18.116.163.253
+      public_ip_address: 18.116.163.253
+    noct_102:
+      valname: val102
+      ansible_host: 18.191.134.142
+      public_ip_address: 18.191.134.142
+    noct_103:
+      valname: val103
+      ansible_host: 18.222.141.47
+      public_ip_address: 18.222.141.47
+    noct_104:
+      valname: val104
+      ansible_host: 3.141.152.61
+      public_ip_address: 3.141.152.61
+    noct_105:
+      valname: val105
+      ansible_host: 18.220.203.87
+      public_ip_address: 18.220.203.87
+    noct_106:
+      valname: val106
+      ansible_host: 18.191.229.251
+      public_ip_address: 18.191.229.251
+    noct_107:
+      valname: val107
+      ansible_host: 3.138.193.82
+      public_ip_address: 3.138.193.82
+    noct_108:
+      valname: val108
+      ansible_host: 3.16.214.210
+      public_ip_address: 3.16.214.210
+    noct_109:
+      valname: val109
+      ansible_host: 3.131.128.170
+      public_ip_address: 3.131.128.170
+    noct_110:
+      valname: val110
+      ansible_host: 3.129.15.0
+      public_ip_address: 3.129.15.0
+    noct_111:
+      valname: val111
+      ansible_host: 3.19.234.64
+      public_ip_address: 3.19.234.64
+    noct_112:
+      valname: val112
+      ansible_host: 3.17.26.179
+      public_ip_address: 3.17.26.179
+
+    forkmon0:
+      # TODO
+    explorer0:  # noct_701
+      ansible_host: 3.143.249.224
+      public_ip_address: 3.143.249.224
+    metrics0:  # noct_801
+      ansible_host: 18.220.215.83
+      public_ip_address: 18.220.215.83
+    bootnode0:  # noct_901
+      ansible_host: 3.22.27.117
+      public_ip_address: 3.22.27.117
+      bootnode_p2p_priv_key: "{{lookup('env', 'NOCTURNE_BOOTNODE0_PRIV')}}"
+
+  children:
+    bootnode:
+      hosts:
+        bootnode0:
+    forkmon:
+      hosts:
+        forkmon0:
+    metrics:
+      hosts:
+        metrics0:
+    beacon:
+      hosts:
+        explorer0:
+        noct_101:
+        noct_102:
+        noct_103:
+        noct_104:
+        noct_105:
+        noct_106:
+        noct_107:
+        noct_108:
+        noct_109:
+        noct_110:
+        noct_111:
+        noct_112:
+    validator:
+      hosts:
+        noct_101:
+        noct_102:
+        noct_103:
+        noct_104:
+        noct_105:
+        noct_106:
+        noct_107:
+        noct_108:
+        noct_109:
+        noct_110:
+        noct_111:
+        noct_112:
+    eth1:
+      hosts:
+        explorer0:
+        noct_101:
+        noct_102:
+        noct_103:
+        noct_104:
+        noct_105:
+        noct_106:
+        noct_107:
+        noct_108:
+        noct_109:
+        noct_110:
+        noct_111:
+        noct_112:
+    teku:
+      hosts:
+        noct_101:
+        noct_102:
+        noct_103:
+    prysm:
+      hosts:
+        explorer0:
+        noct_104:
+        noct_105:
+        noct_106:
+    lighthouse:
+      hosts:
+        noct_107:
+        noct_108:
+        noct_109:
+    nimbus:
+      hosts:
+        noct_110:
+        noct_111:
+        noct_112:
+    geth:
+      hosts:
+        explorer0:
+        noct_101:
+        noct_104:
+        noct_107:
+        noct_110:
+    besu:
+      hosts:
+        noct_102:
+        noct_105:
+        noct_108:
+        noct_111:
+    nethermind:
+      hosts:
+        noct_103:
+        noct_106:
+        noct_109:
+        noct_112:
+

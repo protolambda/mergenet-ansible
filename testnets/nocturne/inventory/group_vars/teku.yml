@@ -1,0 +1,61 @@
+eth2_client_name: teku
+beacon_image_name: mkalinin/teku:rayonism
+validator_image_name: mkalinin/teku:rayonism
+
+beacon_memory: 7000M
+beacon_kernel_memory: 7500M
+
+beacon_volumes:
+  - "{{beacon_node_dir}}:/beacondata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
+
+beacon_start_args: >
+  --network "/networkdata/eth2_config.yaml"
+  --data-path "/beacondata"
+  --p2p-enabled=true
+  --p2p-advertised-ip={{public_ip_address}}
+  --logging={{beacon_log_level}}
+  --initial-state "/networkdata/genesis.ssz"
+  --eth1-endpoint "{{eth1endpoint}}"
+  --p2p-discovery-bootnodes "{{ bootnode_enrs | join(',') }}"
+  --metrics-enabled=true --metrics-interface=0.0.0.0 --metrics-port="{{beacon_metrics_port}}"
+  --p2p-discovery-enabled=true
+  --p2p-peer-lower-bound=1
+  --p2p-port="{{beacon_p2p_port}}"
+  --rest-api-enabled=true
+  --rest-api-docs-enabled=true
+  --rest-api-interface=0.0.0.0
+  --rest-api-port="{{beacon_api_port}}"
+  --metrics-host-allowlist="*"
+  --rest-api-host-allowlist="*"
+  --Xdata-storage-non-canonical-blocks-enabled=true
+
+beacon_env:
+  JAVA_OPTS: "-Xmx6000m -Xms6000m"
+
+# TODO: maybe configure logging style via env var later
+#  LOG4J_CONFIGURATION_FILE: "/beacondata/log_config.xml"
+
+
+beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
+
+validator_memory: 2000M
+validator_kernel_memory: 2500M
+
+validator_volumes:
+  - "{{validator_node_dir}}:/validatordata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+
+validator_start_args: >
+  validator-client
+  --network "/networkdata/eth2_config.yaml"
+  --data-path "/validatordata"
+  --beacon-node-api-endpoint "{{beacon_endpoint}}"
+  --validators-graffiti="{{graffiti}}"
+  --validator-keys "/validatordata/keys:/validatordata/secrets"
+
+keystores_file_mode: "0704"
+
+beacon_user_id: "1000:1000"
+validator_user_id: "1000:1000"
