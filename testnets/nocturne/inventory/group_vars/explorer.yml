@@ -1,5 +1,5 @@
 explorer_container_name: explorer
-explorer_memory: 3000m
+explorer_memory: 9000m
 explorer_image_name: "protolambda/merge-explorer:latest"
 
 explorer_host_dir: "{{home_dir}}/explorer_data"

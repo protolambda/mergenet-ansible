@@ -10,7 +10,7 @@ beacon_volumes:
 
 beacon_start_args: >
   beacon_node
-  --network=steklo
+  --network=nocturne
   --max-peers="60"
   --data-dir="/beacondata"
   --web3-url="{{eth1endpoint_ws}}"
