@@ -32,64 +32,65 @@ all:
   hosts:
     noct_101:
       valname: val101
-      ansible_host: 18.116.163.253
-      public_ip_address: 18.116.163.253
+      ansible_host: 18.221.225.249
+      public_ip_address: 18.221.225.249
     noct_102:
       valname: val102
-      ansible_host: 18.191.134.142
-      public_ip_address: 18.191.134.142
+      ansible_host: 18.191.99.99
+      public_ip_address: 18.191.99.99
     noct_103:
       valname: val103
-      ansible_host: 18.222.141.47
-      public_ip_address: 18.222.141.47
+      ansible_host: 13.59.26.83
+      public_ip_address: 13.59.26.83
     noct_104:
       valname: val104
-      ansible_host: 3.141.152.61
-      public_ip_address: 3.141.152.61
+      ansible_host: 18.222.199.228
+      public_ip_address: 18.222.199.228
     noct_105:
       valname: val105
-      ansible_host: 18.220.203.87
-      public_ip_address: 18.220.203.87
+      ansible_host: 18.216.123.250
+      public_ip_address: 18.216.123.250
     noct_106:
       valname: val106
-      ansible_host: 18.191.229.251
-      public_ip_address: 18.191.229.251
+      ansible_host: 3.137.189.12
+      public_ip_address: 3.137.189.12
     noct_107:
       valname: val107
-      ansible_host: 3.138.193.82
-      public_ip_address: 3.138.193.82
+      ansible_host: 3.133.90.91
+      public_ip_address: 3.133.90.91
     noct_108:
       valname: val108
-      ansible_host: 3.16.214.210
-      public_ip_address: 3.16.214.210
+      ansible_host: 18.220.33.80
+      public_ip_address: 18.220.33.80
     noct_109:
       valname: val109
-      ansible_host: 3.131.128.170
-      public_ip_address: 3.131.128.170
+      ansible_host: 18.224.252.227
+      public_ip_address: 18.224.252.227
     noct_110:
       valname: val110
-      ansible_host: 3.129.15.0
-      public_ip_address: 3.129.15.0
+      ansible_host: 3.141.197.255
+      public_ip_address: 3.141.197.255
     noct_111:
       valname: val111
-      ansible_host: 3.19.234.64
-      public_ip_address: 3.19.234.64
+      ansible_host: 18.117.9.14
+      public_ip_address: 18.117.9.14
     noct_112:
       valname: val112
-      ansible_host: 3.17.26.179
-      public_ip_address: 3.17.26.179
+      ansible_host: 18.219.69.72
+      public_ip_address: 18.219.69.72
 
-    forkmon0:
-      # TODO
+    forkmon0:  # noct_601
+      ansible_host: 18.219.192.38
+      public_ip_address: 18.219.192.38
     explorer0:  # noct_701
-      ansible_host: 3.143.249.224
-      public_ip_address: 3.143.249.224
+      ansible_host: 18.188.159.150
+      public_ip_address: 18.188.159.150
     metrics0:  # noct_801
-      ansible_host: 18.220.215.83
-      public_ip_address: 18.220.215.83
+      ansible_host: 3.143.205.242
+      public_ip_address: 3.143.205.242
     bootnode0:  # noct_901
-      ansible_host: 3.22.27.117
-      public_ip_address: 3.22.27.117
+      ansible_host: 3.128.171.66
+      public_ip_address: 3.128.171.66
       bootnode_p2p_priv_key: "{{lookup('env', 'NOCTURNE_BOOTNODE0_PRIV')}}"
 
   children:

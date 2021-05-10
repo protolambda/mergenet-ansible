@@ -4,30 +4,32 @@ weak_subjectivity_provider_endpoint: ""
 etherscan_api_key: ""
 http_timeout_milliseconds: 2000
 endpoints:
-  - addr: 18.116.163.253:4000  # noct_101
+  - addr: 18.221.225.249:4000  # noct_101
     eth1: Geth
-  - addr: 18.191.134.142:4000  # noct_102
+  - addr: 18.191.99.99:4000  # noct_102
     eth1: Besu
-  - addr: 18.222.141.47:4000  # noct_103
+  - addr: 13.59.26.83:4000  # noct_103
     eth1: Nethermind
-  - addr: 3.141.152.61:4000  # noct_104
+  - addr: 18.222.199.228:4000  # noct_104
     eth1: Geth
-  - addr: 18.220.203.87:4000  # noct_105
+  - addr: 18.216.123.250:4000  # noct_105
     eth1: Besu
-  - addr: 18.191.229.251:4000  # noct_106
+  - addr: 3.137.189.12:4000  # noct_106
     eth1: Nethermind
-  - addr: 3.138.193.82:4000  # noct_107
+  - addr: 3.133.90.91:4000  # noct_107
     eth1: Geth
-  - addr: 3.16.214.210:4000  # noct_108
+  - addr: 18.220.33.80:4000  # noct_108
     eth1: Besu
-  - addr: 3.131.128.170:4000  # noct_109
+  - addr: 18.224.252.227:4000  # noct_109
     eth1: Nethermind
-  - addr: 3.129.15.0:4000  # noct_110
+  - addr: 3.141.197.255:4009  # noct_110
     eth1: Geth
-  - addr: 3.19.234.64:4000  # noct_111
+  - addr: 18.117.9.14:4009  # noct_111
     eth1: Besu
-  - addr: 3.17.26.179:4000  # noct_112
+  - addr: 18.219.69.72:4009  # noct_112
     eth1: Nethermind
+  - addr: 18.188.159.150:4000  # explorer0
+    eth1: Geth (explorer node)
 
 outputDir: /public
 eth2:
