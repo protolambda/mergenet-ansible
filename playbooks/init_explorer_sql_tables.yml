@@ -1,0 +1,19 @@
+- name: Init explorer sql tables
+  hosts: explorer
+  gather_facts: false
+  serial: 20
+  tasks:
+    - name: Run psql table creation
+      docker_container:
+        name: "postgres_tmp"
+        state: started
+        image: "{{ explorer_postgres_image_name }}"
+        pull: true
+        restart_policy: no
+        auto_remove: false
+        detach: no
+        network_mode: host
+        log_options: "{{ common_log_options }}"
+        log_driver: "{{ common_log_driver }}"
+        volumes: "{{ explorer_postgres_init_volumes }}"
+        command: "{{ explorer_postgres_init_args }}"

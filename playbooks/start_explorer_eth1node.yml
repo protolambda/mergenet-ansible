@@ -1,5 +1,5 @@
-- name: Start beacon node
-  hosts: eth1,!explorer
+- name: Start eth1 node for explorer
+  hosts: "eth1:&explorer"
   gather_facts: true
   serial: 20
   tasks:
@@ -12,7 +12,13 @@
         restart_policy: unless-stopped
         memory_swappiness: 0
         kernel_memory: "{{eth1_kernel_memory}}"
-        network_mode: host
+        network_mode: bridge
+        networks:
+          - name: "{{explorer_docker_network_name}}"
+            ipv4_address: "172.1.1.103"
+        ports:
+          - "{{eth1_rpc_port}}:{{eth1_rpc_port}}"
+          - "{{eth1_ws_rpc_port}}:{{eth1_ws_rpc_port}}"
         restart: "{{ eth1_require_restart | default(false) }}"
         log_options: "{{ common_log_options }}"
         log_driver: "{{ common_log_driver }}"

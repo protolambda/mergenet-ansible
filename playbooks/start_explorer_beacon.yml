@@ -1,5 +1,5 @@
-- name: Start beacon node
-  hosts: beacon,!explorer
+- name: Start beacon node for explorer
+  hosts: "beacon:&explorer"
   gather_facts: true
   serial: 20
   tasks:
@@ -12,7 +12,16 @@
         restart_policy: unless-stopped
         memory_swappiness: 0
         kernel_memory: "{{beacon_kernel_memory}}"
-        network_mode: host
+        network_mode: bridge
+        networks:
+          - name: "{{explorer_docker_network_name}}"
+            ipv4_address: "172.1.1.102"
+        ports:
+          - "{{beacon_api_port}}:{{beacon_api_port}}"
+          - "{{beacon_grpc_port}}:{{beacon_grpc_port}}"
+          - "{{beacon_p2p_port}}:{{beacon_p2p_port}}"
+          - "{{beacon_p2p_port}}:{{beacon_p2p_port}}/udp"
+          - "{{beacon_metrics_port}}:{{beacon_metrics_port}}"
         restart: "{{ beacon_require_restart | default(false) }}"
         log_options: "{{ common_log_options }}"
         log_driver: "{{ common_log_driver }}"

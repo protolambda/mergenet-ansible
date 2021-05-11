@@ -107,6 +107,7 @@ all:
     explorer0:  # noct_701
       ansible_host: 18.188.159.150
       public_ip_address: 18.188.159.150
+      eth1endpoint: http://172.1.1.103:8545
     metrics0:  # noct_801
       ansible_host: 3.143.205.242
       public_ip_address: 3.143.205.242
@@ -125,6 +126,9 @@ all:
     metrics:
       hosts:
         metrics0:
+    explorer:
+      hosts:
+        explorer0:
     beacon:
       hosts:
         explorer0:
