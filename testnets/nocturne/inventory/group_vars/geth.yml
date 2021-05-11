@@ -18,6 +18,7 @@ geth_init_args: >
 
 eth1_start_args: >
   --catalyst
+  --networkid=702
   --http --http.api net,eth,consensus
   --http.port {{eth1_rpc_port}}
   --http.addr 0.0.0.0
