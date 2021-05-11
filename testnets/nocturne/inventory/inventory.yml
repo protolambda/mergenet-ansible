@@ -1,0 +1,222 @@
+all:
+  vars:
+    github_user_pubkeys:
+      - protolambda
+      - djrtwo
+      - ralexstokes
+    ansible_user: "ubuntu"
+    eth1endpoint: http://127.0.0.1:8545
+    eth1_rpc_port: 8545
+    eth1_ws_rpc_port: 8546
+    nimbus_rpc_port: 4009
+    beacon_api_port: 4000
+    beacon_grpc_port: 4001
+    beacon_metrics_port: 8000
+    beacon_p2p_port: 9000
+    letsencrypt_email: proto@protolambda.com
+    forkmon_domain: fork.nocturne.rayonism.io
+    explorer_domain: nocturne.rayonism.io
+    graffiti: "proto {{eth2_client_name}} {{eth1_client_name}}"
+    local_explorerdata_host_dir: "{{inventory_dir}}/../explorerdata"
+    local_explorerdata_host_archive: "{{inventory_dir}}/../explorerdata.tar.gz"
+    local_forkmondata_host_dir: "{{inventory_dir}}/../forkmondata"
+    local_forkmondata_host_archive: "{{inventory_dir}}/../forkmondata.tar.gz"
+    local_networkdata_host_dir: "{{inventory_dir}}/../networkdata"
+    local_networkdata_host_archive: "{{inventory_dir}}/../networkdata.tar.gz"
+    # private dirs
+    local_validator_host_dir: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}"
+    local_validator_host_archive: "{{inventory_dir}}/../keystore_prep/validators/{{valname}}.tar.gz"
+    bootnode_enrs:
+      # Proto noct_101: Teku + Geth
+      - "enr:-KG4QAot7X6xLDriqiOpDx9SsoGyDa_IOEaMyibfGxSnSwGNSRU49YJDkluFuw-bqO3EpYiLCBJkfp5JTEcoh6XA6UQDhGV0aDKQ6PqIZwAABwL__________4JpZIJ2NIJpcIQS3eH5iXNlY3AyNTZrMaEDzOz7QvfIbJC2iYzO1E0H_EkoA7Rr3cXK88CHRFl2bTODdGNwgiMog3VkcIIjKA"
+      # Proto noct 102: Teku + Besu
+      - "enr:-KG4QHfAwMzERDnjq59K5YPzWpRXrkCKKF-vwcGbE-Y5-WbVVbjzjYGP1mFxmcwpLmqPZLmlZOJNkZeLA3Le9dImCocDhGV0aDKQ6PqIZwAABwL__________4JpZIJ2NIJpcIQSv2NjiXNlY3AyNTZrMaECEuQJA4lxZX7zoqTXq5Lj2LhqzY865AHIn-apmr_Q4oyDdGNwgiMog3VkcIIjKA"
+      # Proto noct 103: Teku + Nethermind
+      - "enr:-KG4QFddZVEYZl40l7lfrDLwWD2zxyvdvscVwh68dNYSJMzOTqdlPFvsyymK5NE-e3dEiTwPENAyY-FpyoYRqnPoqu0DhGV0aDKQ6PqIZwAABwL__________4JpZIJ2NIJpcIQNOxpTiXNlY3AyNTZrMaECBRIx5tIZXH6Zcyb4uIf7nJx_o1jDHoxR5UIxBZBokS2DdGNwgiMog3VkcIIjKA"
+      # Proto noct 104: Prysm + Geth
+      - "enr:-LK4QM7m9MQqU7N2cDt2TqxrY6sDG1jnm4hk0MigeQGcUxTURvEZc1gk2nveZiZfBN7mumqIwQ9lWdSwegaEbnUNphoBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhBLex-SJc2VjcDI1NmsxoQPHMYyjD5XaR3797lG_Wj-JoqPcFOa3dwHDlAbIx6loBYN0Y3CCIyiDdWRwgiMo"
+      # Proto noct 105: Prysm + Besu
+      - "enr:-LK4QHso1e97FeoDFl0FcSGaQNlq6REBUxxt7vwTvUKC8WhjMVUYDLQ44lhAwVt5wUKRCKeX63KF_eQSbbYKCzluaWEBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhBLYe_qJc2VjcDI1NmsxoQPkN-M3x7SKIqlebY40swTVbBT3-XILub8PI5sPIz_LBYN0Y3CCIyiDdWRwgiMo"
+      # Proto noct 106: Prysm + Nethermind
+      - "enr:-LK4QMl5I25EREe2En8EKM-9lLLm9WcjHu5znHAHga8uCQv9M67nZ9qusrypHsdTfu7MMKzmJYS4XKYcZFTYiw4AOicBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhAOJvQyJc2VjcDI1NmsxoQMKcofI7xFJkHKBvZn34PonEtwLl6_Wf4n6MlMcYzzV04N0Y3CCIyiDdWRwgiMo"
+      # Proto noct 107: Lighthouse + Geth
+      - "enr:-LK4QO47q-FNnfDcQk88xW3gOXhqN1qomLSd5OgUNJ1pSg4eJXEA65Eq99K6KaUHQ6lxfY1adMGWeN0An7FXNuKlaHcBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhAOFWluJc2VjcDI1NmsxoQIWLK0r-BMnD1zGl3cSI1lO7ph07NZGJuNSgxLUlB336oN0Y3CCIyiDdWRwgiMo"
+      # Proto noct 108: Lighthouse + Besu
+      - "enr:-LK4QI1brZ3_T28UxYaU9k-2B324nb7_IfEsT_3pjS_Kjx5eYZ96JM-YujYO2UX28TKzvhn3awrREs_aGBCKFGdddHcBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhBLcIVCJc2VjcDI1NmsxoQOX5hzJZXAOnZ2JmcMy25uOcWz713bcf01HRHopA8EwnoN0Y3CCIyiDdWRwgiMo"
+      # Proto noct 109: Lighthouse + Nethermind
+      - "enr:-LK4QNstPLesGCGI4g4t-79M6b8C6Fdxms4vmKtWietRgfYmP2Hkk_z_mHcV4eQbkqB6P7rh1QI_lJ4siWKBmQWk7wcBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhBLg_OOJc2VjcDI1NmsxoQJhwfIDOttCK4baG6D_LvT8oANUmEkbGPMx7ra0hmEHeoN0Y3CCIyiDdWRwgiMo"
+      # Proto noct 110: Nimbus + Geth
+      - "enr:-LK4QOH7_twj22lYG7Ua3V_2bO1FKu3PUtH11VFVKvNBsN6WE2KCPNA4ZeznCUtaV9t1ifNE2dv4j2cLI1io5E9WihkBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhAONxf-Jc2VjcDI1NmsxoQKYfHmHELRhqvZyuMr-K6v-Ii7C3ngmoE72UpVM6P8gpIN0Y3CCIyiDdWRwgiMo"
+      # Proto noct 111: Nimbus + Besu
+      - "enr:-LK4QPLOWBnsm00pHaNa5cCfmbO9afg0WZ1r4jZlcwtcQWoQTOKwIumDEEUnCgrJOpd5h61qgvvJI0-YccAaE8zhyq0Bh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhBJ1CQ6Jc2VjcDI1NmsxoQJO4yHzl09NWLY-5_el7stRQyWy7ZA2kISbZE93ITqyToN0Y3CCIyiDdWRwgiMo"
+      # Proto noct 112: Nimbus + Nethermind
+      - "enr:-LK4QO_bDdCQDgCZPgbSiGOY_6tMUZszQI2xUNehnWC9bPmsEJNhgUsQ33pHPzSKbfh9czhTP4NkhcQ2qSBBFKKavHEBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpDo-ohnAAAHAv__________gmlkgnY0gmlwhBLbRUiJc2VjcDI1NmsxoQJPx5SiPDV6VX0lLUpB-ikjZ7oEZUIImDnCmc1Z7atU5oN0Y3CCIyiDdWRwgiMo"
+      # Potuz Prysm
+      - "enr:-LK4QPdxpXtNDdjcm0qI-l4-S4VmsNc1Hp9T1-Ecmw1-9b7icQ9PwLJ9KTmRWjojny4d1najP-8QOiZ5dPQD0SvdARkBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpBFcvozAAAHAv__________gmlkgnY0gmlwhMkRGeqJc2VjcDI1NmsxoQLwnUMFzRnGKHvvegYVekJiFJyWl1orvfI2rPd7xwTx_oN0Y3CCMsiDdWRwgi7g"
+      # Potuz Teku
+      - "enr:-KG4QN6RMHAluiAeTTulVvhqCIQBBAPD0yXQWfhpfp83bxcVHA3D1lN3DB1y7Jdk72u-m2Kiq6iFxMZlfUw40woHfnoDhGV0aDKQRXL6MwAABwL__________4JpZIJ2NIJpcITJERnqiXNlY3AyNTZrMaED_BrIRskPW9j6pTFZppJ17lcOEybwAOLkIx4-te9AhC6DdGNwgiMog3VkcIIjKA"
+      # Proto discv5 only
+      - "enr:-Ku4QEDWyEs1Va0YSxSHMbcSaFuasQ2F-kGZ_Mn-doSxbuvpBCrKmTwmvHJK2jcELj7vUgKKj3ORACvqTwtH1y8F9skBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhAOAq0KJc2VjcDI1NmsxoQI-C81GsaRAfP8-HH3FM_rcBPTBfzSFIWCkNCkKj9TmTIN1ZHCCIyg"
+  hosts:
+    noct_101:
+      valname: val101
+      ansible_host: 18.221.225.249
+      public_ip_address: 18.221.225.249
+    noct_102:
+      valname: val102
+      ansible_host: 18.191.99.99
+      public_ip_address: 18.191.99.99
+    noct_103:
+      valname: val103
+      ansible_host: 13.59.26.83
+      public_ip_address: 13.59.26.83
+    noct_104:
+      valname: val104
+      ansible_host: 18.222.199.228
+      public_ip_address: 18.222.199.228
+    noct_105:
+      valname: val105
+      ansible_host: 18.216.123.250
+      public_ip_address: 18.216.123.250
+    noct_106:
+      valname: val106
+      ansible_host: 3.137.189.12
+      public_ip_address: 3.137.189.12
+    noct_107:
+      valname: val107
+      ansible_host: 3.133.90.91
+      public_ip_address: 3.133.90.91
+    noct_108:
+      valname: val108
+      ansible_host: 18.220.33.80
+      public_ip_address: 18.220.33.80
+    noct_109:
+      valname: val109
+      ansible_host: 18.224.252.227
+      public_ip_address: 18.224.252.227
+    noct_110:
+      valname: val110
+      ansible_host: 3.141.197.255
+      public_ip_address: 3.141.197.255
+    noct_111:
+      valname: val111
+      ansible_host: 18.117.9.14
+      public_ip_address: 18.117.9.14
+    noct_112:
+      valname: val112
+      ansible_host: 18.219.69.72
+      public_ip_address: 18.219.69.72
+
+    forkmon0:  # noct_601
+      ansible_host: 18.219.192.38
+      public_ip_address: 18.219.192.38
+    explorer0:  # noct_701
+      ansible_host: 18.188.159.150
+      public_ip_address: 18.188.159.150
+      eth1endpoint: http://172.1.1.103:8545
+    metrics0:  # noct_801
+      ansible_host: 3.143.205.242
+      public_ip_address: 3.143.205.242
+    bootnode0:  # noct_901
+      ansible_host: 3.128.171.66
+      public_ip_address: 3.128.171.66
+      bootnode_p2p_priv_key: "{{lookup('env', 'NOCTURNE_BOOTNODE0_PRIV')}}"
+
+  children:
+    bootnode:
+      hosts:
+        bootnode0:
+    forkmon:
+      hosts:
+        forkmon0:
+    metrics:
+      hosts:
+        metrics0:
+    explorer:
+      hosts:
+        explorer0:
+    beacon:
+      hosts:
+        explorer0:
+        noct_101:
+        noct_102:
+        noct_103:
+        noct_104:
+        noct_105:
+        noct_106:
+        noct_107:
+        noct_108:
+        noct_109:
+        noct_110:
+        noct_111:
+        noct_112:
+    validator:
+      hosts:
+        noct_101:
+        noct_102:
+        noct_103:
+        noct_104:
+        noct_105:
+        noct_106:
+        noct_107:
+        noct_108:
+        noct_109:
+        noct_110:
+        noct_111:
+        noct_112:
+    eth1:
+      hosts:
+        explorer0:
+        noct_101:
+        noct_102:
+        noct_103:
+        noct_104:
+        noct_105:
+        noct_106:
+        noct_107:
+        noct_108:
+        noct_109:
+        noct_110:
+        noct_111:
+        noct_112:
+    teku:
+      hosts:
+        noct_101:
+        noct_102:
+        noct_103:
+    prysm:
+      hosts:
+        explorer0:
+        noct_104:
+        noct_105:
+        noct_106:
+    lighthouse:
+      hosts:
+        noct_107:
+        noct_108:
+        noct_109:
+    nimbus:
+      hosts:
+        noct_110:
+        noct_111:
+        noct_112:
+    geth:
+      hosts:
+        explorer0:
+        noct_101:
+        noct_104:
+        noct_107:
+        noct_110:
+    besu:
+      hosts:
+        noct_102:
+        noct_105:
+        noct_108:
+        noct_111:
+    nethermind:
+      hosts:
+        noct_103:
+        noct_106:
+        noct_109:
+        noct_112:
+

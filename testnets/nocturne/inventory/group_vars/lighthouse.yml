@@ -1,0 +1,59 @@
+eth2_client_name: lighthouse
+beacon_image_name: protolambda/lighthouse:rayonism
+validator_image_name: protolambda/lighthouse:rayonism
+
+beacon_memory: 5000M
+beacon_kernel_memory: 5500M
+
+beacon_volumes:
+  - "{{beacon_node_dir}}:/beacondata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
+
+beacon_start_args: >
+  lighthouse
+  --datadir "/beacondata"
+  --testnet-deposit-contract-deploy-block 0
+  --testnet-genesis-state "/networkdata/genesis.ssz"
+  --testnet-yaml-config "/networkdata/eth2_config.yaml"
+  --debug-level={{beacon_log_level}}
+  beacon_node
+  --enr-address={{public_ip_address}}
+  --enr-tcp-port={{beacon_p2p_port}} --enr-udp-port={{beacon_p2p_port}}
+  --port={{beacon_p2p_port}} --discovery-port={{beacon_p2p_port}}
+  --eth1 --eth1-endpoints "{{eth1endpoint}}"
+  --boot-nodes "{{ bootnode_enrs | join(',') }}"
+  --http
+  --http-address 0.0.0.0
+  --http-port "{{beacon_api_port}}"
+  --metrics
+  --metrics-address 0.0.0.0
+  --metrics-port "{{beacon_metrics_port}}"
+  --listen-address 0.0.0.0
+
+beacon_endpoint: "http://127.0.0.1:{{beacon_api_port}}"
+
+validator_memory: 2000M
+validator_kernel_memory: 2500M
+
+validator_volumes:
+  - "{{validator_node_dir}}:/validatordata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
+
+validator_start_args: >
+  lighthouse
+  --testnet-deposit-contract-deploy-block 0
+  --testnet-genesis-state "/networkdata/genesis.ssz"
+  --testnet-yaml-config "/networkdata/eth2_config.yaml"
+  validator_client
+  --init-slashing-protection
+  --beacon-nodes "{{beacon_endpoint}}"
+  --graffiti="{{graffiti}}"
+  --validators-dir "/validatordata/keys"
+  --secrets-dir "/validatordata/secrets"
+
+keystores_file_mode: "0700"
+
+beacon_user_id: "1000:1000"
+validator_user_id: "1000:1000"

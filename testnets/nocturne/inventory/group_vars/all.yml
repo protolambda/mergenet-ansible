@@ -1,0 +1,25 @@
+common_log_options:
+  max-file: "10"
+  max-size: 30m
+  mode: non-blocking
+  max-buffer-size: 4m
+
+common_log_driver: json-file
+
+home_dir: "/home/{{ ansible_user }}"
+beacon_node_dir: "{{home_dir}}/beacon"
+validator_node_dir: "{{home_dir}}/validator"
+eth1_node_dir: "{{home_dir}}/eth1"
+testnet_dir: "{{home_dir}}/networkdata"
+
+beacon_container_name: beacon
+validator_container_name: validator
+eth1_container_name: eth1
+
+beacon_log_level: debug
+
+# TODO: override bootnode_enr
+bootnode_enr: ""
+
+node_exporter_web_listen_address: "0.0.0.0:8100"
+

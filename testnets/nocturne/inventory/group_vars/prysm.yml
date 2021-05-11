@@ -1,0 +1,57 @@
+eth2_client_name: prysm
+beacon_image_name: protolambda/prysm-beacon:rayonism
+validator_image_name: protolambda/prysm-validator:rayonism
+
+beacon_memory: 5000M
+beacon_kernel_memory: 5500M
+
+beacon_volumes:
+  - "{{beacon_node_dir}}:/beacondata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+  - "{{testnet_dir}}/genesis.ssz:/networkdata/genesis.ssz"
+
+beacon_start_args: >
+  --accept-terms-of-use=true
+  --datadir="/beacondata"
+  --min-sync-peers=0
+  --http-web3provider="{{eth1endpoint}}"
+  {% for bootnode_enr in bootnode_enrs %}
+  --bootstrap-node="{{ bootnode_enr }}"
+  {% endfor %}
+  --chain-config-file="/networkdata/eth2_config.yaml"
+  --genesis-state="/networkdata/genesis.ssz"
+  --verbosity={{beacon_log_level}}
+  --p2p-host-ip={{public_ip_address}}
+  --p2p-max-peers=30
+  --p2p-udp-port={{beacon_p2p_port}} --p2p-tcp-port={{beacon_p2p_port}}
+  --monitoring-host=0.0.0.0 --monitoring-port={{beacon_metrics_port}}
+  --rpc-host=0.0.0.0 --rpc-port={{beacon_grpc_port}}
+  --grpc-gateway-host=0.0.0.0
+  --grpc-gateway-port={{beacon_api_port}}
+  --verbosity="debug"
+  --enable-debug-rpc-endpoints
+  --min-sync-peers 1
+
+# GRPC, not REST JSON
+beacon_endpoint: "127.0.0.1:{{beacon_grpc_port}}"
+
+validator_memory: 2000M
+validator_kernel_memory: 2500M
+
+validator_volumes:
+  - "{{validator_node_dir}}:/validatordata"
+  - "{{testnet_dir}}/eth2_config.yaml:/networkdata/eth2_config.yaml"
+
+validator_start_args: >
+  --accept-terms-of-use=true
+  --datadir="/validatordata"
+  --chain-config-file="/networkdata/eth2_config.yaml"
+  --beacon-rpc-provider={{beacon_endpoint}}
+  --graffiti="{{graffiti}}"
+  --wallet-dir=/validatordata/wallet
+  --wallet-password-file="/validatordata/pass.txt"
+
+keystores_file_mode: "0700"
+
+beacon_user_id: "1000:1000"
+validator_user_id: "1000:1000"

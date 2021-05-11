@@ -10,7 +10,7 @@
         image: "{{ eth1_image_name }}"
         pull: true
         restart_policy: no
-        auto_remove: true
+        auto_remove: false
         detach: no
         network_mode: host
         log_options: "{{ common_log_options }}"
