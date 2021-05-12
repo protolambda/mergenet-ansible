@@ -7,6 +7,7 @@
     # explorer on 172.1.1.101
     # beacon   on 172.1.1.102
     # eth1     on 172.1.1.103
+    # explorerstats on 172.1.1.104
     - name: Create explorer net
       docker_network:
         name: "{{explorer_docker_network_name}}"

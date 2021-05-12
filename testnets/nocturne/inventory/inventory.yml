@@ -58,7 +58,7 @@ all:
       # Proto discv5 only
       - "enr:-Ku4QEDWyEs1Va0YSxSHMbcSaFuasQ2F-kGZ_Mn-doSxbuvpBCrKmTwmvHJK2jcELj7vUgKKj3ORACvqTwtH1y8F9skBh2F0dG5ldHOIAAAAAAAAAACEZXRoMpB5-A5dAAAHAf__________gmlkgnY0gmlwhAOAq0KJc2VjcDI1NmsxoQI-C81GsaRAfP8-HH3FM_rcBPTBfzSFIWCkNCkKj9TmTIN1ZHCCIyg"
   hosts:
-    noct_101:
+    noct_101:  # teku
       valname: val101
       ansible_host: 18.221.225.249
       public_ip_address: 18.221.225.249
@@ -70,7 +70,7 @@ all:
       valname: val103
       ansible_host: 13.59.26.83
       public_ip_address: 13.59.26.83
-    noct_104:
+    noct_104:  # prysm
       valname: val104
       ansible_host: 18.222.199.228
       public_ip_address: 18.222.199.228
@@ -82,7 +82,7 @@ all:
       valname: val106
       ansible_host: 3.137.189.12
       public_ip_address: 3.137.189.12
-    noct_107:
+    noct_107:  # lighthouse
       valname: val107
       ansible_host: 3.133.90.91
       public_ip_address: 3.133.90.91
@@ -94,7 +94,7 @@ all:
       valname: val109
       ansible_host: 18.224.252.227
       public_ip_address: 18.224.252.227
-    noct_110:
+    noct_110: # nimbus
       valname: val110
       ansible_host: 3.141.197.255
       public_ip_address: 3.141.197.255
