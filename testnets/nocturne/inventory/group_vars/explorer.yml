@@ -33,3 +33,5 @@ explorer_stats_container_name: explorerstats
 explorer_stats_volumes:
   - "{{explorer_host_dir}}:/data"
 explorer_stats_start_args: "./statistics --config=/data/config.yaml"
+
+explorer_beacon_extra_args: "--slots-per-archive-point=64"

@@ -14,6 +14,7 @@ beacon_start_args: >
   --accept-terms-of-use=true
   --datadir="/beacondata"
   --contract-deployment-block 0
+  --deposit-contract "0x4242424242424242424242424242424242424242"
   --min-sync-peers=0
   --http-web3provider="{{eth1endpoint}}"
   {% for bootnode_enr in bootnode_enrs %}

@@ -23,6 +23,7 @@ beacon_start_args: >
   --p2p-discovery-enabled=true
   --p2p-peer-lower-bound=1
   --p2p-port="{{beacon_p2p_port}}"
+  --log-destination=CONSOLE
   --rest-api-enabled=true
   --rest-api-docs-enabled=true
   --rest-api-interface=0.0.0.0

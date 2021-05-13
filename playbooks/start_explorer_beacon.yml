@@ -28,6 +28,6 @@
         volumes: "{{beacon_volumes}}"
         memory: "{{beacon_memory}}"
         memory_swap: "{{beacon_memory}}"
-        command: "{{ beacon_start_args }}"
+        command: "{{ beacon_start_args }} {{ explorer_beacon_extra_args }}"
         env: "{{ beacon_env | default({}) }}"
         user: "{{ beacon_user_id }}"
